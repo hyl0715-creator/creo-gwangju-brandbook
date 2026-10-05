@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes">
+<meta name="description" content="DYB CREO&최선어학원 경기광주캠퍼스 디지털 브랜드북">
+<title>CREO 디지털 브랜드북</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#081c38;color:#fff;font-family:'Noto Sans KR','Pretendard','Malgun Gothic',sans-serif}
+header{position:sticky;top:0;z-index:20;background:#071a34f2;border-bottom:1px solid #c9a45e55;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:22px;font-weight:900;letter-spacing:.01em} .brand b{color:#e1b65e}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+button,a.btn{border:1px solid #d4ad62;background:#102e59;color:#fff;border-radius:14px;padding:12px 16px;font-size:17px;font-weight:800;text-decoration:none;cursor:pointer}
+a.gold{background:#d2a856;color:#0a1e3c}
+.viewer{min-height:calc(100vh - 72px);display:flex;align-items:flex-start;justify-content:center;padding:18px}
+.stage{width:min(100%,980px);display:flex;flex-direction:column;align-items:center;gap:14px}
+.pagewrap{position:relative;width:100%;display:flex;justify-content:center;align-items:flex-start;overflow:auto;text-align:center;margin:0 auto}
+.page{width:auto;max-width:100%;height:auto;display:block;object-fit:contain;background:#fff;box-shadow:0 10px 35px #0007;border-radius:4px;transform:scale(var(--zoom,1));transform-origin:top center;transition:transform .15s ease;margin:0 auto}
+.nav{display:flex;gap:10px;align-items:center;justify-content:center;position:sticky;bottom:10px;z-index:15}
+.counter{font-size:19px;font-weight:900;padding:12px 18px;background:#071a34e8;border:1px solid #d4ad6255;border-radius:999px}
+.quick{margin:0 auto 30px;width:min(980px,calc(100% - 32px));display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quick a,.quick button{padding:18px;font-size:19px}
+.student-video-section{margin:0 auto 42px;width:min(980px,calc(100% - 32px));background:#fff;color:#10243f;border-radius:18px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.student-video-section h2{margin:0 0 8px;text-align:center;font-size:30px;color:#0d2c57}
+.student-video-section .lead{text-align:center;font-size:18px;line-height:1.7;color:#536174;margin:0 0 20px}
+.student-video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:start}
+.student-video-card{background:#f7f8fa;border-radius:14px;padding:10px;border:1px solid #e5e7eb}
+.student-video-card video{width:100%;display:block;border-radius:10px;background:#000;max-height:520px}
+.student-video-card p{text-align:center;font-weight:800;font-size:16px;margin:9px 4px 2px;color:#16345c}
+.qr-section{margin:0 auto 38px;width:min(980px,calc(100% - 32px));background:#fff;color:#10243f;border-radius:18px;padding:24px;display:flex;gap:24px;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.18);text-align:center}
+.qr-copy{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.qr-copy h3{margin:0 0 10px;font-size:30px;color:#0d2c57;text-align:center}
+.qr-copy p{margin:0 0 14px;line-height:1.8;font-size:18px;color:#49566a;text-align:center}
+.qr-copy strong{color:#0a1e3c}
+.qr-box{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}
+.qr-box img{width:210px;height:210px;border:1px solid #d6dbe3;border-radius:12px;background:#fff;padding:8px;margin:0 auto}
+.qr-caption{font-size:17px;font-weight:800;color:#0d2c57;text-align:center}
+.footer{text-align:center;color:#cbd5e1;font-size:13px;padding:10px 20px 35px}
+@media(max-width:640px){
+ header{align-items:flex-start;flex-direction:column} .actions{width:100%;justify-content:center}
+ .viewer{padding:8px} .page{border-radius:0;box-shadow:none} .quick{grid-template-columns:1fr}
+ .qr-section{flex-direction:column;align-items:center;text-align:center} .qr-box{align-self:center}
+ .student-video-grid{grid-template-columns:1fr} .student-video-section h2{font-size:25px} .student-video-section .lead{font-size:17px}
+ .brand{font-size:20px} button,a.btn{font-size:16px;padding:12px 14px} .counter{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><b>CREO</b> DIGITAL BRAND BOOK</div>
+  <div class="actions">
+    <a class="btn gold" href="https://forms.gle/CXhbZ8kNC2KHktmV8" target="_blank" rel="noopener">진단 테스트 신청</a>
+    <button onclick="document.getElementById('student-speaking').scrollIntoView({behavior:'smooth'})">1학년~4학년 아이들 이야기</button>
+    <button onclick="zoomOut()">－</button><button onclick="zoomIn()">＋</button>
+  </div>
+</header>
+
+<div class="viewer">
+  <div class="stage">
+    <div class="pagewrap"><img id="page" class="page" alt="CREO 브랜드북 페이지"></div>
+    <div class="nav">
+      <button onclick="prev()">◀ 이전</button>
+      <div class="counter"><span id="num">1</span> / 25</div>
+      <button onclick="next()">다음 ▶</button>
+    </div>
+  </div>
+</div>
+
+<div class="quick">
+  <button onclick="showPage(1)">CREO 파닉스 보기</button>
+  <a class="btn gold" href="https://forms.gle/CXhbZ8kNC2KHktmV8" target="_blank" rel="noopener">우리 아이 진단 테스트 신청</a>
+</div>
+
+<section id="student-speaking" class="student-video-section">
+  <h2>CREO 1학년~4학년 아이들의 이야기</h2>
+  <p class="lead">설명 영상이 아니라, <strong>우리 아이 또래 학생들이 실제로 영어로 말하고 참여하는 모습</strong>을 담았습니다.<br>학년이 올라갈수록 어떻게 성장하는지 자연스럽게 확인해 보세요.</p>
+  <div class="student-video-grid">
+    <div class="student-video-card">
+        <video controls playsinline preload="metadata" src="videos/grade1.mp4"></video>
+        <p>CREO 1학년 아이들의 이야기</p>
+      </div>
+<div class="student-video-card">
+        <video controls playsinline preload="metadata" src="videos/grade2.mp4"></video>
+        <p>CREO 2학년 아이들의 이야기</p>
+      </div>
+<div class="student-video-card">
+        <video controls playsinline preload="metadata" src="videos/grade3.mp4"></video>
+        <p>CREO 3학년 아이들의 이야기</p>
+      </div>
+<div class="student-video-card">
+        <video controls playsinline preload="metadata" src="videos/grade4.mp4"></video>
+        <p>CREO 4학년 아이들의 이야기</p>
+      </div>
+  </div>
+</section>
+
+<section class="qr-section">
+  <div class="qr-copy">
+    <h3>진단 테스트 QR</h3>
+    <p><strong>우리 아이의 영어 변화가 시작되는 곳, CREO</strong><br>QR을 스캔하거나 버튼을 누르면 학습 진단 테스트 신청으로 바로 연결됩니다.</p>
+    <a class="btn gold" href="https://forms.gle/CXhbZ8kNC2KHktmV8" target="_blank" rel="noopener">진단 테스트 신청 바로가기</a>
+  </div>
+  <div class="qr-box">
+    <img src="assets/diagnostic_qr.png" alt="CREO 진단 테스트 QR">
+    <div class="qr-caption">진단 테스트 신청 QR</div>
+  </div>
+</section>
+
+<div class="footer">DYB CREO&최선 어학원 경기광주캠퍼스</div>
+
+<script>
+const pages = ["pages/page-01.jpg", "pages/page-02.jpg", "pages/page-03.jpg", "pages/page-04.jpg", "pages/page-05.jpg", "pages/page-06.jpg", "pages/page-07.jpg", "pages/page-08.jpg", "pages/page-09.jpg", "pages/page-10.jpg", "pages/page-11.jpg", "pages/page-12.jpg", "pages/page-13.jpg", "pages/page-14.jpg", "pages/page-15.jpg", "pages/page-16.jpg", "pages/page-17.jpg", "pages/page-18.jpg", "pages/page-19.jpg", "pages/page-20.jpg", "pages/page-21.jpg", "pages/page-22.jpg", "pages/page-23.jpg", "pages/page-24.jpg", "pages/page-25.jpg"];
+let idx=0, zoom=1;
+const img=document.getElementById('page');
+function applyZoom(){document.documentElement.style.setProperty('--zoom',zoom)}
+function render(){img.src=pages[idx];document.getElementById('num').textContent=idx+1;window.scrollTo({top:0,behavior:'smooth'})}
+function next(){idx=(idx+1)%pages.length;zoom=1;applyZoom();render()}
+function prev(){idx=(idx-1+pages.length)%pages.length;zoom=1;applyZoom();render()}
+function showPage(n){idx=n;zoom=1;applyZoom();render()}
+function zoomIn(){zoom=Math.min(1.8,zoom+0.15);applyZoom()}
+function zoomOut(){zoom=Math.max(0.85,zoom-0.15);applyZoom()}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+render();
+</script>
+</body>
+</html>
